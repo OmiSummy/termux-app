@@ -1,0 +1,22 @@
+name: termux
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Something
+      run: |
+        sudo apt update && sudo apt upgrade
+        ./gradlew assembleDebug
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: |
+          ./app/build/outputs/apk/debug/*v8a.apk
