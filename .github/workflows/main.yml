@@ -10,12 +10,12 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
     - name: Something
       run: |
         sudo apt update && sudo apt upgrade
         ./gradlew assembleDebug
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: my-artifact
         path: |
